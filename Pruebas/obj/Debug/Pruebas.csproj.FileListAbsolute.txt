@@ -1,0 +1,6 @@
+X:\Onedrive\programacion\C#\Nueva carpeta\Pruebas\Pruebas\bin\Debug\Pruebas.exe.config
+X:\Onedrive\programacion\C#\Nueva carpeta\Pruebas\Pruebas\bin\Debug\Pruebas.exe
+X:\Onedrive\programacion\C#\Nueva carpeta\Pruebas\Pruebas\bin\Debug\Pruebas.pdb
+X:\Onedrive\programacion\C#\Nueva carpeta\Pruebas\Pruebas\obj\Debug\Pruebas.csprojAssemblyReference.cache
+X:\Onedrive\programacion\C#\Nueva carpeta\Pruebas\Pruebas\obj\Debug\Pruebas.exe
+X:\Onedrive\programacion\C#\Nueva carpeta\Pruebas\Pruebas\obj\Debug\Pruebas.pdb

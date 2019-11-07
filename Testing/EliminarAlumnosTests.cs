@@ -21,18 +21,5 @@ namespace Testing
         {
             Program.EliminarTodosLosAlumnos(new System.Collections.SortedList());
         }
-
-        /*[TestMethod]*/
-        public void ClearAllListTest()
-        {
-            var list = new System.Collections.SortedList();
-            list.Add(123, "pepito");
-
-            var listResposed = Program.EliminarTodosLosAlumnos(list);
-
-            var salida = Console.Out;
-
-            Assert.AreEqual("¿De verdad quiere eliminar todos los alumnos? S/n", salida);
-        }
     }
 }

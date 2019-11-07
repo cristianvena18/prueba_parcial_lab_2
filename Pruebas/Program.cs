@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Pruebas
 {
-    class Program
+    public class Program
     {
         static SortedList alumnos = new SortedList();
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             do
             {
@@ -59,7 +59,7 @@ namespace Pruebas
             MostrarSaludo();
         }
 
-        private static void MostrarSaludo()
+        public static void MostrarSaludo()
         {
             string mensaje = "Muchas gracias por utilizar el sistema!";
             char[] msj = mensaje.ToCharArray();
@@ -79,41 +79,41 @@ namespace Pruebas
             Thread.Sleep(600);
         }
 
-        static void Menu(int opcion)
+        public static void Menu(int opcion)
         {
             Console.Clear();
             switch (opcion)
             {
                 case 1:
-                    CargarAlumno(Program.alumnos);
+                    CargarAlumno(alumnos);
                     break;
                 case 2:
-                    MostrarAlumnos(Program.alumnos);
+                    MostrarAlumnos(alumnos);
                     break;
                 case 3:
-                    if (Program.alumnos.Count == 0)
+                    if (alumnos.Count == 0)
                     {
                         throw new FormatException("No hay alumnos cargados!");
                     }
                     Console.Write("Ingrese un nombre: ");
                     string entrada = Console.ReadLine();
-                    MostrarAlumnos(Program.alumnos, entrada);
+                    MostrarAlumnos(alumnos, entrada);
                     break;
                 case 4:
-                    BuscarYMostrarAlumno(Program.alumnos);
+                    BuscarYMostrarAlumno(alumnos);
                     break;
                 case 5:
-                    EliminarAlumnoAlAzar(Program.alumnos);
+                    alumnos = EliminarAlumnoAlAzar(alumnos);
                     break;
                 case 6:
-                    EliminarTodosLosAlumnos();
+                    alumnos = EliminarTodosLosAlumnos(alumnos);
                     break;
                 default:
-                    break;
+                    throw new ArgumentException("No se a dado un argumento valido");
             }
         }
 
-        private static void EliminarTodosLosAlumnos()
+        public static SortedList EliminarTodosLosAlumnos(SortedList alumnos)
         {
             if (alumnos.Count == 0)
             {
@@ -127,12 +127,12 @@ namespace Pruebas
 
                 if (entrada.ToLower() == "n")
                 {
-                    return;
+                    return alumnos;
                 }
                 else if (entrada.ToLower() == "s")
                 {
-                    Program.alumnos.Clear();
-                    return;
+                    alumnos.Clear();
+                    return alumnos;
                 }
                 else
                 {
@@ -142,7 +142,7 @@ namespace Pruebas
             } while (true);
         }
 
-        private static void EliminarAlumnoAlAzar(SortedList alumnos)
+        public static SortedList EliminarAlumnoAlAzar(SortedList alumnos)
         {
             if (alumnos.Count == 0)
             {
@@ -154,10 +154,10 @@ namespace Pruebas
 
             alumnos.RemoveAt(random);
 
-            Program.alumnos = alumnos;
+            return alumnos;
         }
 
-        private static void BuscarYMostrarAlumno(SortedList alumnos)
+        public static void BuscarYMostrarAlumno(SortedList alumnos)
         {
             if (alumnos.Count == 0)
             {
@@ -206,7 +206,7 @@ namespace Pruebas
             Console.ReadKey();
         }
 
-        private static void MostrarAlumnos(SortedList alumnos)
+        public static void MostrarAlumnos(SortedList alumnos)
         {
             if (alumnos.Count == 0)
             {
@@ -222,7 +222,7 @@ namespace Pruebas
             Console.ReadKey();
         }
 
-        private static void MostrarAlumnos(SortedList alumnos, string entrada)
+        public static void MostrarAlumnos(SortedList alumnos, string entrada)
         {
             if (alumnos.Count == 0)
             {
@@ -231,7 +231,7 @@ namespace Pruebas
 
             if (string.IsNullOrWhiteSpace(entrada))
             {
-                throw new FormatException("Debe ingresar un nombre");
+                throw new ArgumentNullException(entrada, "Debe ingresar un nombre");
             }
 
             foreach (DictionaryEntry item in alumnos)
@@ -246,7 +246,7 @@ namespace Pruebas
             Console.ReadKey();
         }
 
-        private static void CargarAlumno(SortedList alumnos)
+        public static void CargarAlumno(SortedList alumnos)
         {
             int legajo;
             do
@@ -313,8 +313,13 @@ namespace Pruebas
             Program.alumnos = alumnos;
         }
 
-        private static bool VerificarLegajo(int legajo, SortedList alumnos)
+        public static bool VerificarLegajo(int legajo, SortedList alumnos)
         {
+            if (legajo <= 99 || legajo >= 1000)
+            {
+                throw new Exception("El legajo debe tener 3 digitos!");
+            }
+
             if (alumnos.Count == 0)
             {
                 throw new FormatException();

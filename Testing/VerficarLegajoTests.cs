@@ -37,8 +37,10 @@ namespace Testing
         [TestMethod]
         public void IsLegajoNotOK()
         {
-            var list = new System.Collections.SortedList();
-            list.Add(123, "pepito");
+            var list = new System.Collections.SortedList
+            {
+                { 123, "pepito" }
+            };
 
             bool response = Program.VerificarLegajo(123, list);
 

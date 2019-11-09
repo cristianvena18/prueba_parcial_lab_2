@@ -59,10 +59,13 @@ namespace Pruebas
             MostrarSaludo();
         }
 
+
+        /// <summary>
+        /// Muestra un saludo de finalización de programa
+        /// </summary>
         public static void MostrarSaludo()
         {
-            string mensaje = "Muchas gracias por utilizar el sistema!";
-            char[] msj = mensaje.ToCharArray();
+            char[] msj = "Muchas gracias por utilizar el sistema!".ToCharArray();
 
             foreach (var item in msj)
             {
@@ -79,6 +82,11 @@ namespace Pruebas
             Thread.Sleep(600);
         }
 
+
+        /// <summary>
+        /// Deriva las opciones a su respectivo método
+        /// </summary>
+        /// <param name="opcion">Opción por la cual deriva la función</param>
         public static void Menu(int opcion)
         {
             Console.Clear();
@@ -113,6 +121,12 @@ namespace Pruebas
             }
         }
 
+
+        /// <summary>
+        /// Verifica todos los alumnos previa verificación
+        /// </summary>
+        /// <param name="alumnos">Lista de alumnos</param>
+        /// <returns></returns>
         public static SortedList EliminarTodosLosAlumnos(SortedList alumnos)
         {
             if (alumnos.Count == 0)
@@ -142,6 +156,11 @@ namespace Pruebas
             } while (true);
         }
 
+        /// <summary>
+        /// Elimina un alumno al azar utilizando la libreria random
+        /// </summary>
+        /// <param name="alumnos">Lista de alumnos</param>
+        /// <returns></returns>
         public static SortedList EliminarAlumnoAlAzar(SortedList alumnos)
         {
             if (alumnos.Count == 0)
@@ -157,6 +176,10 @@ namespace Pruebas
             return alumnos;
         }
 
+        /// <summary>
+        /// Busca un alumno por legajo y lo muestra
+        /// </summary>
+        /// <param name="alumnos">Lista de alumnos</param>
         public static void BuscarYMostrarAlumno(SortedList alumnos)
         {
             if (alumnos.Count == 0)
@@ -210,6 +233,10 @@ namespace Pruebas
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Muestra todos los alumnos cargados
+        /// </summary>
+        /// <param name="alumnos">Lista de alumnos</param>
         public static void MostrarAlumnos(SortedList alumnos)
         {
             if (alumnos.Count == 0)
@@ -226,6 +253,11 @@ namespace Pruebas
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Busca todos los alumnos que coinciden con una entrada
+        /// </summary>
+        /// <param name="alumnos">Lista de alumnos</param>
+        /// <param name="entrada"></param>
         public static void MostrarAlumnos(SortedList alumnos, string entrada)
         {
             if (alumnos.Count == 0)
@@ -250,6 +282,10 @@ namespace Pruebas
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Carga un alumno en la lista
+        /// </summary>
+        /// <param name="alumnos">Lista de alumnos</param>
         public static void CargarAlumno(SortedList alumnos)
         {
             int legajo;
@@ -324,6 +360,11 @@ namespace Pruebas
             Program.alumnos = alumnos;
         }
 
+        /// <summary>
+        /// Verifica que el nombre sea valido
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static bool IsNameValid(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -340,6 +381,12 @@ namespace Pruebas
             return cnt == name.Length;
         }
 
+        /// <summary>
+        /// Verifica que el legajo no sea repetido
+        /// </summary>
+        /// <param name="legajo">Legajo a verficar</param>
+        /// <param name="alumnos">Lista de alumnos</param>
+        /// <returns></returns>
         public static bool VerificarLegajo(int legajo, SortedList alumnos)
         {
             if (legajo <= 99 || legajo >= 1000)

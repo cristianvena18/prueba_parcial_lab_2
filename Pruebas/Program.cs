@@ -192,18 +192,33 @@ namespace Pruebas
                 {
                     Console.WriteLine("No existe el legajo ingresado");
                 }
+                else
+                {
+                    var item = alumnos[legajo];
+
+                    Console.WriteLine("Alumno con el legajo: {0} y el nombre {1}", legajo, item);
+                }
             }
             catch (Exception)
             {
                 throw;
             }
 
-            var item = alumnos[legajo];
-
-            Console.WriteLine("Alumno con el legajo: {0} y el nombre {1}", legajo, item);
+            
 
             Console.WriteLine("Ingrese una tecla para continuar");
             Console.ReadKey();
+        }
+
+        public static bool IsNameValid(string name)
+        {
+            char[] vs = name.ToCharArray();
+
+            int cnt = (from item in vs
+                       where char.IsLetter(item)
+                       select item).Count();
+
+            return cnt == name.Length;
         }
 
         public static void MostrarAlumnos(SortedList alumnos)
@@ -299,8 +314,15 @@ namespace Pruebas
 
                 if (!string.IsNullOrWhiteSpace(entrada))
                 {
-                    alumnos.Add(legajo, entrada);
-                    break;
+                    if (IsNameValid(entrada))
+                    {
+                        alumnos.Add(legajo, entrada);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ingrese un nombre valido!");
+                    }
                 }
                 else
                 {
